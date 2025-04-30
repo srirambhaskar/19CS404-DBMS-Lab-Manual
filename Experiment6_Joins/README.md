@@ -54,7 +54,7 @@ ON table1.column = table2.column;
 
 **Question 1**
 
---![image](https://github.com/user-attachments/assets/4f78d592-4cfe-4f84-be5f-8b406024e4d1)
+![image](https://github.com/user-attachments/assets/4f78d592-4cfe-4f84-be5f-8b406024e4d1)
 
 
 ```sql
@@ -83,7 +83,7 @@ JOIN
 
 **Question 2**
 
--- ![image](https://github.com/user-attachments/assets/d0dfca95-c8e1-4bed-95d9-daab884007ee)
+![image](https://github.com/user-attachments/assets/d0dfca95-c8e1-4bed-95d9-daab884007ee)
 
 
 ```sql
@@ -110,7 +110,7 @@ LEFT JOIN
 
 **Question 3**
 
--- ![image](https://github.com/user-attachments/assets/bf2bebd0-fe95-40fe-9910-0af7047defed)
+![image](https://github.com/user-attachments/assets/bf2bebd0-fe95-40fe-9910-0af7047defed)
 
 
 ```sql
@@ -127,7 +127,7 @@ WHERE c.cust_name = 'Fabian Johns';
 
 **Question 4**
 
--- ![image](https://github.com/user-attachments/assets/3c0bb25f-28d4-4068-8307-e687eebf5050)
+![image](https://github.com/user-attachments/assets/3c0bb25f-28d4-4068-8307-e687eebf5050)
 
 
 ```sql
@@ -144,7 +144,7 @@ JOIN customer c ON s.city = c.city;
 
 **Question 5**
 
--- ![image](https://github.com/user-attachments/assets/dcc296ab-657f-463d-b122-1d305c1292de)
+![image](https://github.com/user-attachments/assets/dcc296ab-657f-463d-b122-1d305c1292de)
 
 
 ```sql
@@ -162,7 +162,7 @@ WHERE c.city = 'London';
 
 **Question 6**
 
---![image](https://github.com/user-attachments/assets/8a43eb8c-2b97-410f-a678-3a69a2cc57d6)
+![image](https://github.com/user-attachments/assets/8a43eb8c-2b97-410f-a678-3a69a2cc57d6)
 
 
 ```sql
@@ -180,7 +180,7 @@ WHERE s.commission > 0.12;
 
 **Question 7**
 
--- ![image](https://github.com/user-attachments/assets/6f7ca644-5836-4ac1-b585-c1e16760134d)
+![image](https://github.com/user-attachments/assets/6f7ca644-5836-4ac1-b585-c1e16760134d)
 
 
 ```sql
@@ -208,7 +208,7 @@ ORDER BY
 
 **Question 8**
 
--- ![image](https://github.com/user-attachments/assets/e7fb6204-dfb5-4cfa-9ff0-e77543a8ec75)
+![image](https://github.com/user-attachments/assets/e7fb6204-dfb5-4cfa-9ff0-e77543a8ec75)
 
 
 ```sql
@@ -231,7 +231,7 @@ WHERE
 
 **Question 9**
 
--- ![image](https://github.com/user-attachments/assets/5be58ba6-a89a-4bc1-bdb3-1bf7baf10025)
+![image](https://github.com/user-attachments/assets/5be58ba6-a89a-4bc1-bdb3-1bf7baf10025)
 
 
 ```sql
@@ -252,7 +252,7 @@ INNER JOIN
 
 **Question 10**
 
--- ![image](https://github.com/user-attachments/assets/6bb57c0d-a0a5-40ac-941d-ceae6c6d01ea)
+![image](https://github.com/user-attachments/assets/6bb57c0d-a0a5-40ac-941d-ceae6c6d01ea)
 
 
 ```sql
