@@ -48,25 +48,59 @@ Design a database for patient management, appointments, medical records, and bil
 # ER Diagram Submission - Student Name
 
 ## Scenario Chosen:
-University / Hospital (choose one)
+University
 
 ## ER Diagram:
-![ER Diagram](er_diagram.png)
+![alt text](<ER Diagram.png>)
 
 ## Entities and Attributes:
-- Entity1: Attributes
-- Entity2: Attributes
-...
+- Student: Student Name, Register Number, Age, DOB, Year
+- Department: Name, Faculties, Lab
+- Enrollment: Course Code, Credits
+- Course: Name, Course Code, Faculty, Domain, Prerequisites
+- Faculty: Name, Department
 
 ## Relationships and Constraints:
-- Relationship1 (Cardinality, Participation)
-- Relationship2 (Cardinality, Participation)
-...
+- Student — Belongs To — Department
+Cardinality: Many-to-One (Many students belong to one department)
+
+Participation: Total (Every student must belong to a department)
+
+- Student — Does — Enrollment
+Cardinality: One-to-Many (A student can have many enrollment records)
+
+Participation: Total (If a student is taking courses, they must be enrolled)
+
+- Enrollment — Has — Course
+Cardinality: Many-to-One (Each enrollment is for one course, but each course can have many enrollments)
+
+Participation: Total on Enrollment (An enrollment must be for a course)
+
+- Student — Enrolls — Course
+Cardinality: Many-to-Many (A student can enroll in many courses, and a course can have many students)
+
+Participation: Partial
+
+- Course — Teaches — Faculty
+Cardinality: Many-to-One (Each course is taught by one faculty, a faculty can teach many courses)
+
+Participation: Total on Course
+
+- Faculty — Belongs To — Department
+Cardinality: Many-to-One (Each faculty member belongs to one department)
 
 ## Extension (Prerequisite / Billing):
-- Explain how you modeled prerequisites or billing.
+- A course can have one or more other courses as prerequisites.
+
+- This is represented using a many-to-many recursive relationship.
 
 ## Design Choices:
-Brief explanation of why you chose certain entities, relationships, and assumptions
+- Student, Course, Faculty, Department are fundamental academic components.
+
+- Enrollment is a bridge entity for a many-to-many relationship between Students and Courses, while also capturing enrollment metadata (e.g., credits, prerequisites).
+
+- Department helps in structuring programs and associating faculty and students.
 
 ## RESULT
+- The ER model accurately represents an academic system with students, courses, faculty, departments, enrollments, and supports prerequisites through a recursive course relationship.
+
