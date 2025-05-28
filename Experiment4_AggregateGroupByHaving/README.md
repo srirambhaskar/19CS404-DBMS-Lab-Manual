@@ -38,123 +38,207 @@ HAVING condition;
 
 **Question 1**
 --
--- Paste Question 1 here
+How many medical records were created in each month?
+
+Sample table:MedicalRecords Table
+
+![alt text](<image (6).png>)
 
 ```sql
--- Paste your SQL code below for Question 1
+SELECT strftime('%Y-%m', Date) AS Month, COUNT(*) AS TotalRecords
+FROM MedicalRecords
+GROUP BY Month
+ORDER BY Month;
 ```
 
 **Output:**
 
-![Output1](output.png)
+![alt text](image.png)
 
 **Question 2**
 ---
--- Paste Question 2 here
+Write a SQL Query to find how many medications are prescribed for each patient?
+
+Sample table:MedicalRecords Table
+![alt text](<image (6) (1).png>)
+
 
 ```sql
--- Paste your SQL code below for Question 2
+SELECT PatientID, COUNT(Medications) AS AvgMedications
+FROM MedicalRecords GROUP BY PatientID;
 ```
 
 **Output:**
 
-![Output2](output.png)
+![alt text](image-1.png)
 
 **Question 3**
 ---
--- Paste Question 3 here
+How many patients are there in each city?
+
+Sample table: Patients Table
+
+![alt text](<image (3).png>)
 
 ```sql
--- Paste your SQL code below for Question 3
+SELECT Address, COUNT(PatientID) AS TotalPatients 
+FROM Patients
+GROUP BY Address;
 ```
 
 **Output:**
 
-![Output3](output.png)
+![alt text](image-2.png)
 
 **Question 4**
 ---
--- Paste Question 4 here
+Write a SQL query that counts the number of unique salespeople. Return number of salespeople.
+
+Sample table: orders
+```
+ord_no      purch_amt   ord_date    customer_id  salesman_id
+
+----------  ----------  ----------  -----------  -----------
+
+70001       150.5       2012-10-05  3005         5002
+
+70009       270.65      2012-09-10  3001         5005
+
+70002       65.26       2012-10-05  3002         5001
+```
 
 ```sql
--- Paste your SQL code below for Question 4
+SELECT COUNT(DISTINCT Salesman_id) COUNT FROM orders;
 ```
 
 **Output:**
 
-![Output4](output.png)
+![alt text](image-3.png)
 
 **Question 5**
 ---
--- Paste Question 5 here
+Write a SQL query to find how many employees have an income greater than 50K?
+
+Table: employee
+```
+name        type
+----------  ----------
+id          INTEGER
+name        TEXT
+age         INTEGER
+city        TEXT
+income      INTEGER
+```
 
 ```sql
--- Paste your SQL code below for Question 5
+SELECT COUNT(id) AS employees_count FROM employee WHERE income > 50000;
 ```
 
 **Output:**
 
-![Output5](output.png)
+![alt text](image-4.png)
 
 **Question 6**
 ---
--- Paste Question 6 here
+Write a SQL query to find the average length of email addresses (in characters):
+
+Table: customer
+```
+name        type
+----------  ----------
+id          INTEGER
+name        TEXT
+city        TEXT
+email       TEXT
+phone       INTEGER
+```
 
 ```sql
--- Paste your SQL code below for Question 6
+SELECT AVG(LENGTH(email)) AS avg_email_length FROM customer;
 ```
 
 **Output:**
 
-![Output6](output.png)
+![alt text](image-5.png)
 
 **Question 7**
 ---
--- Paste Question 7 here
+Write a SQL query to find the total income of employees aged 40 or above.
+
+Table: employee
+```
+name        type
+----------  ----------
+id          INTEGER
+name        TEXT
+age         INTEGER
+city        TEXT
+income      INTEGER
+```
 
 ```sql
--- Paste your SQL code below for Question 7
+SELECT SUM(income) AS total_income FROM employee WHERE age >= 40;
 ```
 
 **Output:**
 
-![Output7](output.png)
+![alt text](image-6.png)
 
 **Question 8**
 ---
--- Paste Question 8 here
+Write the SQL query that performs grouping by age groups and displays the maximum salary for each group, excluding groups where the maximum salary is not greater than 8000. 
+
+Note: Calculate the age group as multiples of 5.
+
+Eg., 20,22,23 comes in age group 20. 
+
+25,27,29 comes in age group 25.
+
+Sample table: customer1
+
+![alt text](unnamed.png)
 
 ```sql
--- Paste your SQL code below for Question 8
+SELECT (age/5) * 5 AS age_group, MAX(salary)
+FROM customer1
+GROUP BY age_group
+HAVING MAX(salary) > 8000;
 ```
 
 **Output:**
 
-![Output8](output.png)
+![alt text](image-7.png)
 
 **Question 9**
 ---
--- Paste Question 9 here
+Write the SQL query that accomplishes the grouping of data by addresses, calculates the sum of salaries for each address, and excludes addresses where the total salary sum is not greater than 2000.
+
+Sample table: customer1
+
+![alt text](<unnamed (1).png>)
 
 ```sql
--- Paste your SQL code below for Question 9
+SELECT address, SUM(salary) FROM customer1 GROUP BY address HAVING SUM(salary) > 2000;
 ```
 
 **Output:**
 
-![Output9](output.png)
+![alt text](image-8.png)
 
 **Question 10**
 ---
--- Paste Question 10 here
+Write the SQL query that accomplishes the selection of total cost of all products in each category from the "products" table and includes only those products where the total cost is greater than 50.
 
+Sample table: products
+
+![alt text](<unnamed (2).png>)
 ```sql
--- Paste your SQL code below for Question 10
+SELECT category_id, SUM(price) AS Total_Cost FROM products GROUP BY category_id HAVING Total_Cost > 50;
 ```
 
 **Output:**
 
-![Output10](output.png)
+![alt text](image-9.png)
 
 
 ## RESULT
