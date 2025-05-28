@@ -60,7 +60,7 @@ SELECT * FROM CUSTOMERS WHERE salary > 1500;
 
 **Output:**
 
-![alt text](image.png)
+![alt text](Images/image.png)
 
 **Question 2**
 ---
@@ -82,7 +82,7 @@ SELECT * FROM Employee WHERE age < (SELECT AVG(age) FROM Employee WHERE income >
 
 **Output:**
 
-![alt text](image-1.png)
+![alt text](Images/image-1.png)
 
 **Question 3**
 ---
@@ -120,7 +120,7 @@ JOIN (
 
 **Output:**
 
-![alt text](image-2.png)
+![alt text](Images/image-2.png)
 
 **Question 4**
 ---
@@ -146,7 +146,7 @@ SELECT * FROM CUSTOMERS WHERE SALARY > 4500;
 
 **Output:**
 
-![alt text](image-3.png)
+![alt text](Images/image-3.png)
 
 **Question 5**
 ---
@@ -169,7 +169,7 @@ WHERE city IN (SELECT city FROM customer WHERE id IN (3, 7));
 
 **Output:**
 
-![alt text](image-4.png)
+![alt text](Images/image-4.png)
 
 **Question 6**
 ---
@@ -195,7 +195,7 @@ SELECT * FROM CUSTOMERS WHERE ADDRESS = 'Delhi' AND AGE < 30 ORDER BY ID;
 
 **Output:**
 
-![alt text](image-5.png)
+![alt text](Images/image-5.png)
 
 **Question 7**
 ---
@@ -232,7 +232,7 @@ WHERE s.commission = (
 
 **Output:**
 
-![alt text](image-6.png)
+![alt text](Images/image-6.png)
 
 **Question 8**
 ---
@@ -257,7 +257,7 @@ SELECT * FROM CUSTOMERS WHERE AGE < 30;
 
 **Output:**
 
-![alt text](image-7.png)
+![alt text](Images/image-7.png)
 
 **Question 9**
 ---
@@ -280,7 +280,7 @@ WHERE grade > (SELECT AVG(grade) FROM customer WHERE city = 'New York') GROUP BY
 
 **Output:**
 
-![alt text](image-8.png)
+![alt text](Images/image-8.png)
 
 **Question 10**
 ---
@@ -306,7 +306,7 @@ SELECT * FROM CUSTOMERS WHERE ADDRESS = 'Delhi';
 
 **Output:**
 
-![alt text](image-9.png)
+![alt text](Images/image-9.png)
 
 ## RESULT
 Thus, the SQL queries to implement subqueries and views have been executed successfully.
