@@ -42,7 +42,7 @@ How many medical records were created in each month?
 
 Sample table:MedicalRecords Table
 
-![alt text](<image (6).png>)
+![alt text](<Images/image (6).png>)
 
 ```sql
 SELECT strftime('%Y-%m', Date) AS Month, COUNT(*) AS TotalRecords
@@ -53,14 +53,14 @@ ORDER BY Month;
 
 **Output:**
 
-![alt text](image.png)
+![alt text](Images/image.png)
 
 **Question 2**
 ---
 Write a SQL Query to find how many medications are prescribed for each patient?
 
 Sample table:MedicalRecords Table
-![alt text](<image (6) (1).png>)
+![alt text](<Images/image (6) (1).png>)
 
 
 ```sql
@@ -70,7 +70,7 @@ FROM MedicalRecords GROUP BY PatientID;
 
 **Output:**
 
-![alt text](image-1.png)
+![alt text](Images/image-1.png)
 
 **Question 3**
 ---
@@ -78,7 +78,7 @@ How many patients are there in each city?
 
 Sample table: Patients Table
 
-![alt text](<image (3).png>)
+![alt text](<Images/image (3).png>)
 
 ```sql
 SELECT Address, COUNT(PatientID) AS TotalPatients 
@@ -88,7 +88,7 @@ GROUP BY Address;
 
 **Output:**
 
-![alt text](image-2.png)
+![alt text](Images/image-2.png)
 
 **Question 4**
 ---
@@ -113,7 +113,7 @@ SELECT COUNT(DISTINCT Salesman_id) COUNT FROM orders;
 
 **Output:**
 
-![alt text](image-3.png)
+![alt text](Images/image-3.png)
 
 **Question 5**
 ---
@@ -136,7 +136,7 @@ SELECT COUNT(id) AS employees_count FROM employee WHERE income > 50000;
 
 **Output:**
 
-![alt text](image-4.png)
+![alt text](Images/image-4.png)
 
 **Question 6**
 ---
@@ -159,7 +159,7 @@ SELECT AVG(LENGTH(email)) AS avg_email_length FROM customer;
 
 **Output:**
 
-![alt text](image-5.png)
+![alt text](Images/image-5.png)
 
 **Question 7**
 ---
@@ -182,7 +182,7 @@ SELECT SUM(income) AS total_income FROM employee WHERE age >= 40;
 
 **Output:**
 
-![alt text](image-6.png)
+![alt text](Images/image-6.png)
 
 **Question 8**
 ---
@@ -196,7 +196,7 @@ Eg., 20,22,23 comes in age group 20.
 
 Sample table: customer1
 
-![alt text](unnamed.png)
+![alt text](Images/unnamed.png)
 
 ```sql
 SELECT (age/5) * 5 AS age_group, MAX(salary)
@@ -207,7 +207,7 @@ HAVING MAX(salary) > 8000;
 
 **Output:**
 
-![alt text](image-7.png)
+![alt text](Images/image-7.png)
 
 **Question 9**
 ---
@@ -215,7 +215,7 @@ Write the SQL query that accomplishes the grouping of data by addresses, calcula
 
 Sample table: customer1
 
-![alt text](<unnamed (1).png>)
+![alt text](<Images/unnamed (1).png>)
 
 ```sql
 SELECT address, SUM(salary) FROM customer1 GROUP BY address HAVING SUM(salary) > 2000;
@@ -223,7 +223,7 @@ SELECT address, SUM(salary) FROM customer1 GROUP BY address HAVING SUM(salary) >
 
 **Output:**
 
-![alt text](image-8.png)
+![alt text](Images/image-8.png)
 
 **Question 10**
 ---
@@ -231,14 +231,14 @@ Write the SQL query that accomplishes the selection of total cost of all product
 
 Sample table: products
 
-![alt text](<unnamed (2).png>)
+![alt text](<Images/unnamed (2).png>)
 ```sql
 SELECT category_id, SUM(price) AS Total_Cost FROM products GROUP BY category_id HAVING Total_Cost > 50;
 ```
 
 **Output:**
 
-![alt text](image-9.png)
+![alt text](Images/image-9.png)
 
 
 ## RESULT
