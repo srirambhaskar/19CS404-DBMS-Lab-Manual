@@ -20,6 +20,7 @@ SELECT AGG_FUNC(column_name) FROM table_name WHERE condition;
 ```
 ### GROUP BY
 Groups records with the same values in specified columns.
+
 **Syntax:**
 ```sql
 SELECT column_name, AGG_FUNC(column_name)
