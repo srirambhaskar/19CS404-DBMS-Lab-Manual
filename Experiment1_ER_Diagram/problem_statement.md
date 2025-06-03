@@ -95,6 +95,7 @@ Cardinality: Many-to-One (Each faculty member belongs to one department)
 - This is represented using a many-to-many recursive relationship.
 
 ## Design Choices:
+
 - Student, Course, Faculty, Department are fundamental academic components.
 
 - Enrollment is a bridge entity for a many-to-many relationship between Students and Courses, while also capturing enrollment metadata (e.g., credits, prerequisites).
