@@ -83,6 +83,7 @@ CREATE TABLE Table_Name (
 );
 ```
 ### 5. FOREIGN KEY
+
 Used to reference the primary key of another table.
 Syntax:
 ```sql
