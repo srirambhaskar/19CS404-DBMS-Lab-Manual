@@ -1,7 +1,7 @@
 # DBMS Laboratory Manual Submission
 
 ## 🎓 Course: 19CS404 Database Management System and its Applications  
-## 🧑‍🏫 Instructor: Ms. G Abinaya 
+## 🧑‍🏫 Instructor: Ms. THAVA VINU A
 
 ![image](https://github.com/user-attachments/assets/7e6f9751-b530-4526-9a3d-8e322e3b2e6d)
 
