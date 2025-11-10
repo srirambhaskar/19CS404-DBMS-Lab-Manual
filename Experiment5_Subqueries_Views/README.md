@@ -1,191 +1,244 @@
-# Experiment 4: Aggregate Functions, Group By and Having Clause
+# Experiment 5: Subqueries and Views
 
 ## AIM
-To study and implement aggregate functions, GROUP BY, and HAVING clause with suitable examples.
+To study and implement subqueries and views.
 
 ## THEORY
 
-### Aggregate Functions
-These perform calculations on a set of values and return a single value.
+### Subqueries
+A subquery is a query inside another SQL query and is embedded in:
+- WHERE clause
+- HAVING clause
+- FROM clause
 
-- **MIN()** – Smallest value  
-- **MAX()** – Largest value  
-- **COUNT()** – Number of rows  
-- **SUM()** – Total of values  
-- **AVG()** – Average of values
+**Types:**
+- **Single-row subquery**:
+  Sub queries can also return more than one value. Such results should be made use along with the operators in and any.
+- **Multiple-row subquery**:
+  Here more than one subquery is used. These multiple sub queries are combined by means of ‘and’ & ‘or’ keywords.
+- **Correlated subquery**:
+  A subquery is evaluated once for the entire parent statement whereas a correlated Sub query is evaluated once per row processed by the parent statement.
 
-**Syntax:**
+**Example:**
 ```sql
-SELECT AGG_FUNC(column_name) FROM table_name WHERE condition;
+SELECT * FROM employees
+WHERE salary > (SELECT AVG(salary) FROM employees);
 ```
-### GROUP BY
-Groups records with the same values in specified columns.
-**Syntax:**
+### Views
+A view is a virtual table based on the result of an SQL SELECT query.
+**Create View:**
 ```sql
-SELECT column_name, AGG_FUNC(column_name)
-FROM table_name
-GROUP BY column_name;
+CREATE VIEW view_name AS
+SELECT column1, column2 FROM table_name WHERE condition;
 ```
-### HAVING
-Filters the grouped records based on aggregate conditions.
-**Syntax:**
+**Drop View:**
 ```sql
-SELECT column_name, AGG_FUNC(column_name)
-FROM table_name
-GROUP BY column_name
-HAVING condition;
+DROP VIEW view_name;
 ```
 
 **Question 1**
 --
-![{C4EAD905-5F81-49D6-BEAD-08963A5DB43E}](https://github.com/user-attachments/assets/f7cf2b25-37df-47ed-990a-88a959aad7bc)
+-- From the following tables, write a SQL query to find all the orders issued by the salesman 'Paul Adam'. Return ord_no, purch_amt, ord_date, customer_id and salesman_id.
+
+salesman table
 
 ```sql
-select Medication,count() as TotalPrescriptions
-from Prescriptions
-group by Medication
+--
+SELECT ord_no, purch_amt, ord_date, customer_id, salesman_id
+FROM Orders
+WHERE salesman_id = (
+    SELECT salesman_id
+    FROM Salesman
+    WHERE name = 'Paul Adam'
+);
+
 ```
 
 **Output:**
 
-![{999353BE-84CC-4020-BA6E-EA016385FAF6}](https://github.com/user-attachments/assets/a9545fb8-8dd7-4b00-9f35-236d1a2adb83)
+![image](https://github.com/user-attachments/assets/509162b1-2ecc-4e89-ad17-496bd4607a38)
+
 
 **Question 2**
 ---
-![{5DD58B65-315D-4DB4-9109-81AA63EF2CB5}](https://github.com/user-attachments/assets/f2e6a7c7-f85d-4cad-8db9-f13bb3f92bf0)
-
+-- 
+Write a SQL query to retrieve all columns from the CUSTOMERS table for customers whose AGE is LESS than $30
 ```sql
-select DoctorID,count() as TotalPrescriptions from Prescriptions
-group by DoctorID
+--
+SELECT *
+FROM CUSTOMERS
+WHERE AGE < 30;
+
 ```
 
 **Output:**
 
-![{FA459BF6-05A7-4193-B80E-813A17BC37A8}](https://github.com/user-attachments/assets/7d84fcff-941e-4f70-ac37-b186554589bb)
+![image](https://github.com/user-attachments/assets/7e313fb0-07e5-46b3-a239-0ee13bb2649b)
+
 
 **Question 3**
-![{EEB04734-2C71-471A-9B3A-1E816F522C47}](https://github.com/user-attachments/assets/33560868-4663-4285-9fed-26ed73683330)
-
-
+---
+--
+Write a SQL query to List departments with names longer than the average length
 ```sql
-SELECT PatientID,COUNT() as TotalRecords
-from MedicalRecords
-group by PatientID
+--
+SELECT 
+    department_id AS depar, 
+    department_name
+FROM 
+    Departments
+WHERE 
+    LENGTH(department_name) > (
+        SELECT AVG(LENGTH(department_name)) FROM Departments
+    );
+
 ```
 
 **Output:**
 
-![{7DA39C03-67A4-4D6A-9E1E-12033232E3BC}](https://github.com/user-attachments/assets/2fb7982d-47a5-4d32-bfa6-d26eead47073)
+![image](https://github.com/user-attachments/assets/ee83ff18-13e8-4bf6-84c4-af8285fb94c9)
 
 
 **Question 4**
 ---
-![{0BF1E2DC-751E-46A5-A5E1-281EB2B62289}](https://github.com/user-attachments/assets/bfb51534-6964-4a2d-9e00-bd8e563ca133)
-
-
+--
+Write a SQL query that retrieve all the columns from the table "Grades", where the grade is equal to the maximum grade achieved in each subject.
 ```sql
-select name,length(name) as length from customer
-ORDER BY LENGTH(name) DESC
-LIMIT 1
+--
+SELECT *
+FROM Grades g
+WHERE grade = (
+    SELECT MAX(grade)
+    FROM Grades
+    WHERE subject = g.subject
+);
 
 ```
 
 **Output:**
 
-![{F55D891C-13BC-4A19-918A-E7FC1198BD84}](https://github.com/user-attachments/assets/b3736946-5409-4b97-84cc-6214c8bb1fe0)
+![image](https://github.com/user-attachments/assets/ed9615a8-b1f8-4a0f-bee6-2c196c5860ea)
 
 
 **Question 5**
 ---
-![{48B19B28-4975-4601-8A17-4807F6A71D73}](https://github.com/user-attachments/assets/35da9886-25a1-45fa-bfec-b26a0372443a)
-
+-- From the following tables write a SQL query to count the number of customers with grades above the average in New York City. Return grade and count
 
 ```sql
-select sum(income) as 'total_income' from employee
-where age>=40
+--
+SELECT grade, COUNT(*)
+FROM customer
+GROUP BY grade
+HAVING grade >
+    (SELECT AVG(grade)
+     FROM customer
+     WHERE city = 'New York');
 ```
 
 **Output:**
 
-![{EED6A9DE-B6A8-4AA1-88CD-D0AEE424A1DD}](https://github.com/user-attachments/assets/34d7f6ee-bd6c-4ab6-a2a3-edb6da5e6650)
+![image](https://github.com/user-attachments/assets/9fe8c8cc-bc45-4fd9-9fab-8d0995a687ba)
 
 
 **Question 6**
-![{535B9A25-A992-44B8-95A1-48F871E0F127}](https://github.com/user-attachments/assets/53db6d45-1bbf-42dd-850b-4478873ca6e6)
-
-
+---
+--
+From the following tables, write a SQL query to determine the commission of the salespeople in Paris. Return commission.
 ```sql
-select COUNT(DISTINCT(salesman_id)) as 'COUNT' FROM orders
+--
+SELECT commission 
+FROM salesman 
+WHERE salesman_id IN 
+(SELECT salesman_id FROM customer WHERE city = 'Paris');
+
 ```
 
 **Output:**
 
-![{8ED24307-016F-4CC2-9274-C52518ECF991}](https://github.com/user-attachments/assets/8b4327ed-507b-4622-b661-7caae5f14a81)
+![image](https://github.com/user-attachments/assets/c78010d6-7580-4068-91b6-df2feef9341a)
 
 
 **Question 7**
 ---
-![{024D2596-7B12-4155-8102-0B19E8C148DB}](https://github.com/user-attachments/assets/471c2ed3-115c-48d1-935b-f50eba65198f)
-
-
+-- 
+Write a SQL query that retrieves the all the columns from the Table Grades, where the grade is equal to the minimum grade achieved in each subject.
 ```sql
-select max(age) - min(age) as 'age_difference' from employee
+--
+SELECT *
+FROM Grades g
+WHERE grade = (
+    SELECT MIN(grade)
+    FROM Grades
+    WHERE subject = g.subject
+);
 ```
 
 **Output:**
-
-![{75234451-6E7B-4C2E-AFBC-F01C4C92B866}](https://github.com/user-attachments/assets/b95f18f6-5b9b-488b-a16d-d166827598e9)
+![image](https://github.com/user-attachments/assets/20560466-dbe5-453f-8d51-61be13b7fef9)
 
 
 **Question 8**
 ---
-![{C37A31C9-DB3D-46E9-825D-E4E8F6FCEDA9}](https://github.com/user-attachments/assets/816d8f02-fa5a-4a13-931d-9bf45c9dd957)
-
-
+-- 
+Write a SQL query to Retrieve the names of customers who have a phone number that is not shared with any other customer.
 ```sql
-select category_id, sum(price*category_id) as 'Revenue' from products
-group by category_id
-having Revenue > 25
+--
+SELECT name
+FROM customer c
+WHERE phone IN (
+    SELECT phone
+    FROM customer
+    GROUP BY phone
+    HAVING COUNT(phone) = 1
+);
+
 ```
 
 **Output:**
 
-![{1D0D9F97-C574-4D3E-AD9F-95210D4C3012}](https://github.com/user-attachments/assets/612cce80-0dc2-4e6a-9c99-f245bcbd8f37)
+![image](https://github.com/user-attachments/assets/50d5755d-73b4-458e-8815-255010084c50)
 
 
 **Question 9**
 ---
-![{640C8FAD-AE6D-49F8-B061-9A87510D067D}](https://github.com/user-attachments/assets/71d9668a-276a-4a4f-8639-7d8ce5b2c4d6)
-
+-- Write a SQL query that retrieves the names of students and their corresponding grades, where the grade is equal to the maximum grade achieved in each subject.
 
 ```sql
-select PatientID,COUNT(*) AS 'TotalRecords' from MedicalRecords
-group by PatientID
-HAVING TotalRecords > 3
+--
+SELECT 
+    student_name, 
+    grade
+FROM 
+    GRADES g
+WHERE 
+    grade = (
+        SELECT MAX(grade)
+        FROM GRADES
+        WHERE subject = g.subject
+    );
+
 ```
 
 **Output:**
 
-![{36CB33B5-20BC-4B47-A97C-4BAA5319C36B}](https://github.com/user-attachments/assets/0186a549-5974-4a8a-9021-ab5a198b4c6a)
+![image](https://github.com/user-attachments/assets/8da84011-e4a8-40bc-9898-61d85e033617)
 
 
 **Question 10**
 ---
-![{6BBD9AC7-4DA6-4C27-8D8D-717B1BFC5E17}](https://github.com/user-attachments/assets/c2205938-7bba-43c0-9de7-dbed18de9ab8)
-
-
+--
+Write a SQL query to retrieve all columns from the CUSTOMERS table for customers whose salary is greater than $4500.
 ```sql
-select category_id,count(*) as COUNT FROM products
-group by category_id
-having category_id>2
+--
+select ID,NAME,AGE,ADDRESS,SALARY
+from CUSTOMERS
+where salary>4500;
 ```
 
 **Output:**
 
-![{20F7198D-1790-4B85-9D27-C42AE4475B11}](https://github.com/user-attachments/assets/8044026c-f4db-43ce-977e-b3d0b7e35172)
-
+![image](https://github.com/user-attachments/assets/d09513eb-723b-4adc-be66-fe65b8acddab)
 
 
 ## RESULT
-Thus, the SQL queries to implement aggregate functions, GROUP BY, and HAVING clause have been executed successfully.
-
+Thus, the SQL queries to implement subqueries and views have been executed successfully.
