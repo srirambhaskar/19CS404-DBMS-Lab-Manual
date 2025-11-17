@@ -1,5 +1,6 @@
 # Experiment 3: DML Commands
-
+## Name : B SRI RAM
+## Register Number : 212223040203
 ## AIM
 To study and implement DML (Data Manipulation Language) commands.
 
